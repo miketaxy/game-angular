@@ -2,9 +2,9 @@
 
 <div class="container">
   <div class="game">
-    <img src="assets/first-game/triangle.jpg" alt="" id="triangle" class="hidden" [ngStyle]="{display:'none'}">
-    <img src="assets/first-game/circle.jpg" alt="" id="circle" class="hidden">
-    <img src="assets/first-game/square.jpg" alt="" id="square" class="hidden" >
+    <img src="assets/first-game/triangle.jpg" alt="" id="triangle" [ngStyle]="{display: this.styleFigureGetter.get('triangle')}">
+    <img src="assets/first-game/circle.jpg" alt="" id="circle" [ngStyle]="{display: this.styleFigureGetter.get('circle')}">
+    <img src="assets/first-game/square.jpg" alt="" id="square" [ngStyle]="{display: this.styleFigureGetter.get('square')}">
   </div>
 </div>
 <div id="results" [ngStyle]="{visibility: this.hideAndShowElements()}">

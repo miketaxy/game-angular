@@ -15,10 +15,13 @@ export class FirstGameService {
   private timer!: any;
   private times: any[] = [];
   private averageTime: number = 0;
-
+  private styleFigure: Map<string, string> = new Map<string, string>([['circle', 'none'], ['square', 'none'], ['triangle', 'none']]);
   constructor() {
   }
 
+  get styleFigureGetter(): Map<string, string> {
+    return this.styleFigure;
+  }
   get averageTimeGetter(): number {
     return this.averageTime;
   }
@@ -43,7 +46,7 @@ export class FirstGameService {
 
   clickHandler(figure: string) {
     if (this.isDrawn) {
-      this.removeFigure(figure)
+      this.removeFigure(figure);
       this.isDrawn = false;
       this.gamesPlayed++;
       //next
@@ -76,15 +79,17 @@ export class FirstGameService {
   }
 
   private drawFigure(figure: string): any {
-    document.getElementById(figure)?.classList.remove('hidden');
-    document.getElementById(figure)?.classList.add('active');
+    this.styleFigure.set(figure, 'flex');
     this.isDrawn = true;
   }
 
-  private removeFigure(figure: string): any {
-    document.getElementById(figure)?.classList.remove('active');
-    document.getElementById(figure)?.classList.add('hidden');
+  private endTimer(): any {
     return this.times.push(Date.now() - this.timer);
+  }
+  private removeFigure(figure: string): any {
+    this.styleFigure.set(figure, 'none');
+    this.endTimer();
+    return
   }
 
   hideAndShowElements(): string {

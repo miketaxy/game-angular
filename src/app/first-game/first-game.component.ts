@@ -21,7 +21,9 @@ export class FirstGameComponent implements OnInit {
       }
     });
   }
-
+  get styleFigureGetter(): Map<string, string> {
+    return this.firstGameService.styleFigureGetter;
+  }
   hideAndShowElements(): string {
     return this.firstGameService.hideAndShowElements();
   }

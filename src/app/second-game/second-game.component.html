@@ -1,1 +1,13 @@
-<p>second-game works!</p>
+<div id="start" [ngStyle]="{visibility: this.hideAndShowElements()}"><h2 class="game-text">Press Space to start the game!</h2></div>
+
+<div class="container">
+  <div class="game">
+    <img src="assets/first-game/triangle.jpg" alt="" id="triangle" [ngStyle]="{display: this.styleFigureGetter.get('triangle')}">
+    <img src="assets/first-game/circle.jpg" alt="" id="circle" [ngStyle]="{display: this.styleFigureGetter.get('circle')}">
+    <img src="assets/first-game/square.jpg" alt="" id="square" [ngStyle]="{display: this.styleFigureGetter.get('square')}">
+  </div>
+</div>
+<div id="results" [ngStyle]="{visibility: this.hideAndShowElements()}">
+  <div class="best-result">Your best result: {{this.calculate()}} ms</div>
+  <div class="last-result">Your last result: 0 ms</div>
+</div>

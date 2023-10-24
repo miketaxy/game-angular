@@ -31,15 +31,3 @@
   display: flex;
   justify-content: space-around;
 }
-.active{
-  display: flex;
-}
-.hidden{
-  display: none;
-}
-.activeOther{
-  visibility: visible;
-}
-.hiddenOther{
-  visibility: hidden;
-}
