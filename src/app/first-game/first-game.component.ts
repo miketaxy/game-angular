@@ -1,9 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FirstGameService} from "./first-game.service";
 
-declare var $: any;
-
-
 @Component({
   selector: 'app-first-game',
   templateUrl: './first-game.component.html',
@@ -16,25 +13,20 @@ export class FirstGameComponent implements OnInit {
   ngOnInit() {
     //start game
     document.addEventListener('keypress', (event) => {
-      if (event.key == ' ' && !this.firstGameService.start) {
-        console.log("start game")
-        this.firstGameService.start = true;
+      if (event.key == ' ' && !this.firstGameService.startGetter) {
+        this.firstGameService.startSetter = true;
         this.firstGameService.startGame();
-      }
-      else if(event.key == ' ' && this.firstGameService.start){
-        this.firstGameService.clickHandler()
+      } else if (event.key == ' ' && this.firstGameService.startGetter) {
+        this.firstGameService.clickHandler(this.firstGameService.figureGetter);
       }
     });
-    //lose game
-  //   document.addEventListener('keypress', (event) => {
-  //     console.log("lose game")
-  //     //   if (event.key == ' ' && this.start && this.isDrawn) {
-  //     //     this.start = false;
-  //     //     this.removeFigure('circle');
-  //     //     this.removeFigure('square');
-  //     //     this.removeFigure('triangle');
-  //     //   }
-  //     // });
-  //   });
+  }
+
+  hideAndShowElements(): string {
+    return this.firstGameService.hideAndShowElements();
+  }
+
+  calculate() {
+    return this.firstGameService.averageTimeGetter;
   }
 }
