@@ -44,7 +44,7 @@ export class SecondGameService {
   }
 
   clickHandler(figure: string) {
-    if (this.isDrawn) {
+    if (this.isDrawn && figure == 'triangle') {
       this.removeFigure(figure);
       this.isDrawn = false;
       this.gamesPlayed++;
@@ -58,7 +58,7 @@ export class SecondGameService {
       }
       //lose
     } else {
-      this.loseGame();
+      this.loseGame(figure);
     }
   }
 
@@ -77,9 +77,19 @@ export class SecondGameService {
     });
   }
 
+
   private drawFigure(figure: string): any {
     this.styleFigure.set(figure, 'flex');
-    this.isDrawn = true;
+    if(figure != 'triangle') {
+      this.timeOut = setTimeout(() => {
+        this.removeFigure(figure)
+        this.isDrawn = false;
+        this.startGame();
+      }, 600);
+    }
+    else {
+      this.isDrawn = true;
+    }
   }
 
   private endTimer(): any {
@@ -87,7 +97,12 @@ export class SecondGameService {
   }
   private removeFigure(figure: string): any {
     this.styleFigure.set(figure, 'none');
-    this.endTimer();
+    if(figure == 'triangle') {
+      this.endTimer();
+    }
+    else{
+      this.timer = 0;
+    }
     return
   }
 
@@ -100,14 +115,16 @@ export class SecondGameService {
     this.start = false;
     this.calculateAverageTime(this.times);
     this.hideAndShowElements()
+    this.times = [];
   }
 
-  private loseGame() {
+  private loseGame(figure:string) {
     clearTimeout(this.timeOut);
+    this.removeFigure(figure)
     this.gamesPlayed = 0;
     this.start = false;
     this.hideAndShowElements()
-    this.times.length = 0;
+    this.times = [];
   }
 
   calculateAverageTime(times: any[]): void {
@@ -115,6 +132,7 @@ export class SecondGameService {
     times.forEach((time) => {
       sum += time;
     })
+    console.log(this.times.length)
     this.averageTime = Math.floor(sum / times.length);
   }
 }

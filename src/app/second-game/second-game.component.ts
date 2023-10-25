@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FirstGameService} from "../first-game/first-game.service";
+import {SecondGameService} from "./second-game.service";
 
 @Component({
   selector: 'app-second-game',
@@ -7,29 +7,29 @@ import {FirstGameService} from "../first-game/first-game.service";
   styleUrls: ['./second-game.component.css']
 })
 export class SecondGameComponent implements OnInit{
-  constructor(protected firstGameService: FirstGameService) {
+  constructor(protected secondGameService: SecondGameService) {
   }
 
   ngOnInit() {
     //start game
     document.addEventListener('keypress', (event) => {
-      if (event.key == ' ' && !this.firstGameService.startGetter) {
-        this.firstGameService.startSetter = true;
-        this.firstGameService.startGame();
-      } else if (event.key == ' ' && this.firstGameService.startGetter) {
-        this.firstGameService.clickHandler(this.firstGameService.figureGetter);
+      if (event.key == ' ' && !this.secondGameService.startGetter) {
+        this.secondGameService.startSetter = true;
+        this.secondGameService.startGame();
+      } else if (event.key == ' ' && this.secondGameService.startGetter) {
+        this.secondGameService.clickHandler(this.secondGameService.figureGetter);
       }
     });
   }
   get styleFigureGetter(): Map<string, string> {
-    return this.firstGameService.styleFigureGetter;
+    return this.secondGameService.styleFigureGetter;
   }
   hideAndShowElements(): string {
-    return this.firstGameService.hideAndShowElements();
+    return this.secondGameService.hideAndShowElements();
   }
 
   calculate() {
-    return this.firstGameService.averageTimeGetter;
+    return this.secondGameService.averageTimeGetter;
   }
 
 }
