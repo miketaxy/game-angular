@@ -1,0 +1,37 @@
+
+.container{
+  height: 95vh;
+}
+.line{
+  height: 5px;
+  width: 100vw;
+}
+.game-container{
+  height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+.triangle{
+  height: 50px;
+  width: 50px;
+}
+.game-line{
+  z-index: 0;
+}
+.triangle-up{
+  z-index: -1;
+  margin-bottom: -14px;
+}
+.triangle-down{
+  z-index: -1;
+  margin-top: -4px;
+  margin-left: 75vw;
+}
+
+.results{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 2;
+}
