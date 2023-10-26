@@ -44,7 +44,7 @@ export class SecondGameService {
   }
 
   clickHandler(figure: string) {
-    if (this.isDrawn && figure == 'triangle') {
+    if (this.isDrawn && figure == 'square') {
       this.removeFigure(figure);
       this.isDrawn = false;
       this.gamesPlayed++;
@@ -80,7 +80,7 @@ export class SecondGameService {
 
   private drawFigure(figure: string): any {
     this.styleFigure.set(figure, 'flex');
-    if(figure != 'triangle') {
+    if(figure != 'square') {
       this.timeOut = setTimeout(() => {
         this.removeFigure(figure)
         this.isDrawn = false;
@@ -97,7 +97,7 @@ export class SecondGameService {
   }
   private removeFigure(figure: string): any {
     this.styleFigure.set(figure, 'none');
-    if(figure == 'triangle') {
+    if(figure == 'square') {
       this.endTimer();
     }
     else{

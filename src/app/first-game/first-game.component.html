@@ -2,12 +2,12 @@
 
 <div class="container">
   <div class="game">
-    <img src="assets/first-game/triangle.jpg" alt="" id="triangle" [ngStyle]="{display: this.styleFigureGetter.get('triangle')}">
-    <img src="assets/first-game/circle.jpg" alt="" id="circle" [ngStyle]="{display: this.styleFigureGetter.get('circle')}">
-    <img src="assets/first-game/square.jpg" alt="" id="square" [ngStyle]="{display: this.styleFigureGetter.get('square')}">
+    <img src="../../assets/first-game%20and%20second-game/triangle.jpg" alt="" id="triangle" [ngStyle]="{display: this.styleFigureGetter.get('triangle')}">
+    <img src="../../assets/first-game%20and%20second-game/circle.jpg" alt="" id="circle" [ngStyle]="{display: this.styleFigureGetter.get('circle')}">
+    <img src="../../assets/first-game%20and%20second-game/square.jpg" alt="" id="square" [ngStyle]="{display: this.styleFigureGetter.get('square')}">
   </div>
 </div>
 <div id="results" [ngStyle]="{visibility: this.hideAndShowElements()}">
   <div class="best-result">Your best result: {{this.calculate()}} ms</div>
-  <div class="last-result">Your last result: 0 ms</div>
+  <div class="last-result">Your last result: {{this.calculate()}} ms</div>
 </div>
