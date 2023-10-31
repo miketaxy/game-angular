@@ -79,8 +79,8 @@ export class FirstGameService {
   }
 
   private drawFigure(figure: string): any {
-    this.styleFigure.set(figure, 'flex');
     this.isDrawn = true;
+    this.styleFigure.set(figure, 'flex');
   }
 
   private endTimer(): any {
@@ -104,11 +104,11 @@ export class FirstGameService {
   }
 
   private loseGame() {
-    clearTimeout(this.timeOut);
     this.gamesPlayed = 0;
     this.start = false;
-    this.hideAndShowElements()
     this.times.length = 0;
+    this.hideAndShowElements()
+    clearTimeout(this.timeOut);
   }
 
   calculateAverageTime(times: any[]): void {
