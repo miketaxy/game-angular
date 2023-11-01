@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {animate, AnimationBuilder, state, style} from "@angular/animations";
+import {animate, AnimationBuilder, style} from "@angular/animations";
 import {ThirdGameService} from "./third-game.service";
 
 @Component({
@@ -11,10 +11,14 @@ export class ThirdGameComponent implements OnInit {
   time!: any;
   stop = false;
   start = false;
-  animation = this.animationBuilder.build([
-    state('start', style({marginLeft: '0%'})),
+  repeatCheck = false;
+
+  animationStart = this.animationBuilder.build([
     animate(2000, style({marginLeft: '90%'})),
   ]);
+  animationEnd = this.animationBuilder.build([
+    animate(0, style({marginLeft: '0%'}))
+  ])
 
   constructor(thirdGameService: ThirdGameService, protected animationBuilder: AnimationBuilder) {
   }
@@ -24,18 +28,21 @@ export class ThirdGameComponent implements OnInit {
   }
 
   startAnimation() {
-    let animateTria = this.animation.create(document.querySelector('.triangle-up'));
+    let startAnimateTria = this.animationStart.create(document.querySelector('.triangle-up'));
+    let endAnimateTria = this.animationEnd.create(document.querySelector('.triangle-up'));
     if (!this.start) {
       this.start = true;
       this.time = Date.now();
-      animateTria.play();
-    }
-    else{
-      animateTria.pause();
+      startAnimateTria.play();
+    } else if(!this.repeatCheck) {
+      this.repeatCheck = true;
+      startAnimateTria.pause();
       this.resultCalculation();
       setTimeout(() => {
         alert(`Ваш результат: ${this.time} мс`);
-        animateTria.reset();
+        this.repeatCheck = false;
+        this.start = false;
+        endAnimateTria.play();
       }, 2000)
     }
   }
@@ -45,6 +52,4 @@ export class ThirdGameComponent implements OnInit {
     this.stop = true;
     console.log(this.time)
   }
-
-
 }

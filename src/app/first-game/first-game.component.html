@@ -1,13 +1,13 @@
-<div id="start" [ngStyle]="{visibility: this.hideAndShowElements()}"><h2 class="game-text">Press Space to start the game!</h2></div>
+<div id="start" [ngStyle]="{visibility: this.hideAndShowElements()}"><h2 class="game-text">Press space to start</h2></div>
 
 <div class="container">
   <div class="game">
-    <img src="../../assets/first-game%20and%20second-game/triangle.jpg" alt="" id="triangle" [ngStyle]="{display: this.styleFigureGetter.get('triangle')}">
-    <img src="../../assets/first-game%20and%20second-game/circle.jpg" alt="" id="circle" [ngStyle]="{display: this.styleFigureGetter.get('circle')}">
-    <img src="../../assets/first-game%20and%20second-game/square.jpg" alt="" id="square" [ngStyle]="{display: this.styleFigureGetter.get('square')}">
+    <img src="../../assets/first-game%20and%20second-game/triangle.jpg" alt="" id="triangle" [ngStyle]="{display: this.styleFigure.get('triangle')}">
+    <img src="../../assets/first-game%20and%20second-game/circle.jpg" alt="" id="circle" [ngStyle]="{display: this.styleFigure.get('circle')}">
+    <img src="../../assets/first-game%20and%20second-game/square.jpg" alt="" id="square" [ngStyle]="{display: this.styleFigure.get('square')}">
   </div>
 </div>
 <div id="results" [ngStyle]="{visibility: this.hideAndShowElements()}">
-  <div class="best-result">Your best result: {{this.calculate()}} ms</div>
-  <div class="last-result">Your last result: {{this.calculate()}} ms</div>
+  <div class="best-result">Your best result: {{this.calculateTime()}} ms</div>
+  <div class="last-result">Your last result: {{this.calculateTime()}} ms</div>
 </div>

@@ -8,18 +8,20 @@ import {SecondGameService} from "./second-game/second-game.service";
 import {RouterModule} from "@angular/router";
 import {ThirdGameComponent} from './third-game/third-game.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { FourthGameComponent } from './fourth-game/fourth-game.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FirstGameComponent,
     SecondGameComponent,
-    ThirdGameComponent
+    ThirdGameComponent,
+    FourthGameComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot([
-      {path: 'first-game and second-game', component: FirstGameComponent},
+      {path: 'first-game', component: FirstGameComponent},
       {path: 'second-game', component: SecondGameComponent},
       {path: 'third-game', component: ThirdGameComponent}
     ]),
